@@ -30,4 +30,9 @@ https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${urlencoded_item_u
 
 ## Probe status (2026-08-25-tvshoki-rakuten-aff-probe)
 
-**BLOCKED.** This Cloud Agent environment has no `RAKUTEN_AFFILIATE_ID` (also checked: `RAKUTEN_AFL_ID`, `AFFILIATE_ID`). No wrapped URL was generated. `PROBE.md` is not created.
+**BLOCKED.** This Cloud Agent process env still has no `RAKUTEN_AFFILIATE_ID` (also checked: `RAKUTEN_AFL_ID`, `AFFILIATE_ID`). No wrapped URL was generated. `PROBE.md` is not created.
+
+Grant the secret in the Cursor UI only. Do not put the value in Slack, GitHub, or this repo.
+
+1. If this run shows an Add secrets / setup-action prompt, grant `RAKUTEN_AFFILIATE_ID` there as a Runtime Secret, then restart or send a follow-up on a new agent.
+2. If that prompt is not shown: open the Cloud Agents environment Secrets tab for `[6bc96506-a079-11f1-b532-320a589b8025](https://cursor.com/dashboard/cloud-agents/environments/e/6bc96506-a079-11f1-b532-320a589b8025)`, add a Runtime Secret named exactly `RAKUTEN_AFFILIATE_ID`, then start a **new** Cloud Agent on this branch (`cursor/rakuten-aff-probe-59c7`). A secret added after this VM booted is not injected into the current process.
