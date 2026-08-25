@@ -1,0 +1,15 @@
+{
+  "schema": "tvshoki.grok.observation.v1",
+  "observed_at": "2026-08-24T07:12:00+09:00",
+  "source": {
+    "kind": "search"
+  },
+  "raw_text": "何かが出ていた、という検索スニペット。",
+  "product_candidates": [
+    {
+      "claim_level": "inferred",
+      "confidence": 0.2,
+      "evidence": "brand / product_name / model_number / jan / category のいずれも無いため無効。"
+    }
+  ]
+}
