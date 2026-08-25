@@ -1,0 +1,15 @@
+{
+  "schema": "tvshoki.grok.observation.v1",
+  "observed_at": "2026-08-24T07:12:00+09:00",
+  "source": {
+    "kind": "web"
+  },
+  "raw_text": "例示ブランドの商品が紹介されていた、というまとめ。",
+  "product_candidates": [
+    {
+      "brand": "例示ブランド",
+      "product_name": "例示商品",
+      "evidence": "まとめ記事がブランド名を記載。claim_level を欠くため無効。"
+    }
+  ]
+}

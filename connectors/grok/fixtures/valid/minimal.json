@@ -1,0 +1,23 @@
+{
+  "schema": "tvshoki.grok.observation.v1",
+  "observed_at": "2026-08-24T07:12:00+09:00",
+  "source": {
+    "kind": "x",
+    "account": "example_viewer",
+    "title": "番組内で商品名が読み上げられた、という投稿"
+  },
+  "raw_text": "シューイチ見てた。例示ブランドの掃除機出てきてた気がする。まとめだと楽天URLまで貼ってる人いるけど原文はこれ。公開してよい？はソース側の疑問。",
+  "program": {
+    "name": "シューイチ"
+  },
+  "product_candidates": [
+    {
+      "brand": "例示ブランド",
+      "product_name": "例示掃除機",
+      "category": "home_appliance",
+      "claim_level": "weak_confirmation",
+      "confidence": 0.41,
+      "evidence": "視聴者投稿が番組名とブランド名を併記。一次オンエア未確認のため weak_confirmation。"
+    }
+  ]
+}
