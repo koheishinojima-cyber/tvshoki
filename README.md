@@ -23,3 +23,5 @@ main へ直接 push しない。変更は PR 経由。
 ## ステータス
 
 初期化のみ。実装はこれから。
+
+観測入口の契約: [connectors/grok/](connectors/grok/)
