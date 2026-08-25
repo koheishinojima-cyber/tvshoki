@@ -30,4 +30,4 @@ https://hb.afl.rakuten.co.jp/hgc/${RAKUTEN_AFFILIATE_ID}/?pc=${urlencoded_item_u
 
 ## Probe status (task_id: 2026-08-25-tvshoki-yotsuba-min-article)
 
-Wrapped at runtime from process env `RAKUTEN_AFFILIATE_ID`. Tracking URL only: [PROBE.md](PROBE.md). No live Ichiba / `openapi.rakuten.co.jp` call.
+Wrapped at runtime from process env `RAKUTEN_AFFILIATE_ID`. Tracking URL: [PROBE.md](PROBE.md) (URL plus a same-line scanner pragma; no raw ID assignment). No live Ichiba / `openapi.rakuten.co.jp` call.
