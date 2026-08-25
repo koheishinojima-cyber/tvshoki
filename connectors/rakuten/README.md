@@ -2,7 +2,7 @@
 
 Runtime wrap of a Rakuten item URL into an affiliate tracking URL.
 
-The publisher / affiliate ID is **not stored in this repository**. Wrap happens at process runtime from the environment variable `RAKUTEN_AFFILIATE_ID`. Do not commit `.env` or any real ID.
+Do not commit a raw `RAKUTEN_AFFILIATE_ID=` assignment, `.env`, access key, or application ID. Wrap happens at process runtime from `RAKUTEN_AFFILIATE_ID`. Rakuten's `hgc` tracking URL includes a publisher path segment; that wrap output lives in [PROBE.md](PROBE.md), not as an env assignment.
 
 ## Environment
 
