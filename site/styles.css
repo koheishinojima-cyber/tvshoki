@@ -41,40 +41,79 @@ h1 {
   margin: 0;
 }
 
-.template-note {
-  margin: 0 0 1.25rem;
-  padding: 0.6rem 0.75rem;
-  background: #eeeae3;
-  font-size: 0.9rem;
-}
-
-.item-fields {
-  margin: 0 0 1.5rem;
-}
-
-.item-fields dt {
-  font-size: 0.8rem;
-  color: #555;
-  margin-top: 0.9rem;
-}
-
-.item-fields dd {
-  margin: 0.15rem 0 0;
-}
-
-.cta-wrap {
-  margin: 0;
-}
-
-.cta {
-  display: inline-block;
-  padding: 0.6rem 1.1rem;
-  background: #1a1a1a;
-  color: #fff;
-  text-decoration: none;
-}
-
 .site-footer {
   color: #666;
   font-size: 0.85rem;
+}
+
+/* Conversion product page: identity → price/shipping → CTA in the first screen. Mobile-first. */
+.product {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.program-meta {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.product-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 0.75rem;
+}
+
+.product-brand {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.product h1 {
+  margin: 0.1rem 0 0.5rem;
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+
+.intro {
+  margin: 0 0 0.85rem;
+  font-size: 0.95rem;
+}
+
+.intro a {
+  color: inherit;
+}
+
+.price,
+.shipping {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.shipping {
+  margin-bottom: 1rem;
+}
+
+.cta {
+  display: block;
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.9rem 1rem;
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+}
+
+.ad-disclosure {
+  margin: 0.45rem 0 0;
+  font-size: 0.75rem;
+  color: #666;
+  text-align: center;
 }
