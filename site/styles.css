@@ -48,18 +48,9 @@ h1 {
   font-size: 0.9rem;
 }
 
-.item-fields {
-  margin: 0 0 1.5rem;
-}
-
-.item-fields dt {
-  font-size: 0.8rem;
-  color: #555;
-  margin-top: 0.9rem;
-}
-
-.item-fields dd {
-  margin: 0.15rem 0 0;
+.eyebrow,
+.ad-note {
+  font-size: 0.85rem;
 }
 
 .cta-wrap {
@@ -67,10 +58,13 @@ h1 {
 }
 
 .cta {
-  display: inline-block;
+  display: block;
+  width: 100%;
+  min-height: 44px;
   padding: 0.6rem 1.1rem;
   background: #1a1a1a;
   color: #fff;
+  text-align: center;
   text-decoration: none;
 }
 
