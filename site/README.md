@@ -12,6 +12,8 @@ HTML / CSS のみ。CMS・ダッシュボード・認証・JS フレームワー
 - `index.html` — トップ（スタブ。ライブ SKU ができるまで商品ページへのリンクは置かない）
 - `p/index.html` — 商品コンバージョンページの空テンプレート（パス例: `/p/`）
 - `styles.css` — 共通スタイル（最小）
+- `google59eb4595440230ab.html` — Google Search Console HTML ファイル確認用（1行のみ。HTML で包まない）
+- `404.html` — 存在しないパスは 404。Cloudflare Pages はトップに `404.html` が無いと SPA 扱いし、欠けたパスへ homepage の `index.html` を 200 で返す
 
 ## デプロイ
 
