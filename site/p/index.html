@@ -3,34 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>商品名｜テレビでみた</title>
+  <title>（番組名）（放送日）（商品名）｜テレビでみた</title>
+  <meta name="description" content="（番組名）で紹介された（商品名）。">
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-  <!--
-    NOT A LIVE CASE.
-    Placeholder copy only (番組名 / 2099-01-01 / ブランド / 商品名) for layout review.
-    Do not publish as a live product. Do not link this file from the homepage until a live SKU exists.
-    Do not use パピコ / ガリガリ / 卵めん / 無印カレー as live cases.
-  -->
-  <main class="product">
-    <p class="program-meta">番組名 <time datetime="2099-01-01">2099-01-01</time></p>
-
-    <!-- Image: include only when a real src exists. Omit this block entirely if no image (no empty slot, no 「任意・未設定」).
-         Example when present: <img class="product-image" src="..." alt="商品名"> -->
-
-    <p class="product-brand">ブランド</p>
-    <h1>商品名</h1>
-
-    <!-- If an official evidence URL exists, set it as the href of this sentence. Do not show a labeled 「根拠URL」 field. -->
-    <p class="intro">番組名で紹介</p>
-
-    <p class="price">価格帯</p>
-    <p class="shipping">送料</p>
-
-    <!-- Production tracking URL is injected at publish time. Leave href="#" in this repo. Do not commit a live hb.afl URL or invent a Rakuten ID. -->
-    <a class="cta" href="#">商品を見る</a>
-    <p class="ad-disclosure">広告を含みます</p>
+  <header class="site-header">
+    <p class="brand"><a href="../">テレビでみた</a></p>
+  </header>
+  <main>
+    <p class="template-note">これは空のテンプレートです。実在の商品・番組は載せていません。</p>
+    <article class="item">
+      <p class="eyebrow">（番組名）　（放送日）</p>
+      <!-- 画像があるときだけ残す: <p class="item-image"><img src="" alt="（商品名）"></p> -->
+      <p class="brand-name">（ブランド）</p>
+      <h1>（商品名）</h1>
+      <p class="reason">（番組名）で紹介</p>
+      <p class="price">価格帯：（価格帯）</p>
+      <p class="shipping">送料：（送料事実）</p>
+      <!-- Production tracking URL is injected at publish time. Leave href="#" in this repo. Do not commit a live hb.afl URL or invent a Rakuten ID. -->
+      <p class="cta-wrap"><a class="cta" href="#">商品を見る</a></p>
+      <p class="ad-note">広告を含みます</p>
+    </article>
   </main>
+  <footer class="site-footer">
+    <p>テレビでみた</p>
+  </footer>
 </body>
 </html>
