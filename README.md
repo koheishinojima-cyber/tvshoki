@@ -22,6 +22,6 @@ main へ直接 push しない。変更は PR 経由。
 
 ## ステータス
 
-初期化のみ。実装はこれから。
+静的サイトの最小稿は [site/](site/)。公開ドメイン tv-mita.jp へのデプロイは未実施。
 
 観測入口の契約: [connectors/grok/](connectors/grok/)
