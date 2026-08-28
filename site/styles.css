@@ -53,6 +53,38 @@ h1 {
   font-size: 0.85rem;
 }
 
+.item-image {
+  margin: 0 0 1rem;
+}
+
+.item-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.brand-name {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.item-card {
+  margin: 1.5rem 0 0;
+}
+
+.item-card > a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.item-card h2 {
+  font-size: 1.2rem;
+  line-height: 1.4;
+  margin: 0.25rem 0 0.5rem;
+}
+
 .cta-wrap {
   margin: 0;
 }
