@@ -16,6 +16,23 @@ HTML / CSS のみ。CMS・ダッシュボード・認証・JS フレームワー
 - `sitemap.xml` — live URLs only: `/` `/2026-08-29/` `/p/`
 - `404.html` — real 404. Cloudflare Pages treats a missing top-level `404.html` as an SPA and serves homepage `index.html` for `/sitemap.xml` and `/robots.txt`
 - `_headers` — `text/xml` for `/sitemap.xml`, `text/plain` for `/robots.txt`
+- `_redirects` — present in the deployed root. Pages `_redirects` cannot host-match (`www` → apex). See below.
+
+Canonical URLs are always apex `https://tv-mita.jp/...`, never `www`.
+
+## www → apex
+
+Live `https://www.tv-mita.jp/` and `https://tv-mita.jp/` both returned 200 (duplicate). Pages `_redirects` does not support domain-level redirects, so a `https://www.tv-mita.jp/* https://tv-mita.jp/:splat 301` line is not applied.
+
+Repo equivalent: `functions/_middleware.js` 301s `www.tv-mita.jp` to `https://tv-mita.jp` (path and query kept). HTTP is forced to https on the apex. Always Use HTTPS already 301s `http://www` → `https://www` before the host hop.
+
+Leftover Cloudflare dashboard step (official Pages how-to, [www-redirect](https://developers.cloudflare.com/pages/how-to/www-redirect/)):
+
+1. Bulk Redirects list: Source `www.tv-mita.jp` → Target `https://tv-mita.jp`, status 301. Enable Preserve query string, Subpath matching, Preserve path suffix.
+2. Attach a Bulk Redirect rule for that list on the `tv-mita.jp` zone.
+3. Do not change DNS from this repo. `www` already reaches Cloudflare.
+
+www → 301 cannot be proven from the repo `_redirects` file alone.
 
 ## デプロイ
 

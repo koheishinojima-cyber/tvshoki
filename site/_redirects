@@ -1,0 +1,13 @@
+# www → apex. Cloudflare Pages _redirects cannot host-match
+# (Domain-level redirects are unsupported; source must be a path).
+# Intended mapping (not applied by this file):
+#   https://www.tv-mita.jp/*  https://tv-mita.jp/:splat  301
+#   http://www.tv-mita.jp/*   https://tv-mita.jp/:splat  301
+#
+# Repo equivalent: functions/_middleware.js (Host www.tv-mita.jp → 301 apex).
+# Leftover Cloudflare dashboard step (official Pages www-redirect):
+#   1. Bulk Redirects list: Source www.tv-mita.jp → Target https://tv-mita.jp
+#      Status 301. Enable: Preserve query string, Subpath matching, Preserve path suffix.
+#   2. Attach a Bulk Redirect rule for that list on the tv-mita.jp zone.
+#   3. Do not change DNS from this repo. www already reaches Cloudflare.
+# https://developers.cloudflare.com/pages/how-to/www-redirect/
