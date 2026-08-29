@@ -85,6 +85,28 @@ h1 {
   margin: 0.25rem 0 0.5rem;
 }
 
+.item + .item {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e4dfd6;
+}
+
+.item h2 {
+  font-size: 1.15rem;
+  line-height: 1.4;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.pack,
+.more {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+}
+
+.more a {
+  color: inherit;
+}
+
 .cta-wrap {
   margin: 0;
 }
