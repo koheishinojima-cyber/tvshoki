@@ -12,6 +12,10 @@ HTML / CSS のみ。CMS・ダッシュボード・認証・JS フレームワー
 - `index.html` — トップ（スタブ。ライブ SKU ができるまで商品ページへのリンクは置かない）
 - `p/index.html` — 商品コンバージョンページの空テンプレート（パス例: `/p/`）
 - `styles.css` — 共通スタイル（最小）
+- `robots.txt` — Allow `/` for all user-agents. `Sitemap: https://tv-mita.jp/sitemap.xml`. Do not Disallow Googlebot or hide `/` `/p/` `/2026-08-29/`
+- `sitemap.xml` — live URLs only: `/` `/2026-08-29/` `/p/`
+- `404.html` — real 404. Cloudflare Pages treats a missing top-level `404.html` as an SPA and serves homepage `index.html` for `/sitemap.xml` and `/robots.txt`
+- `_headers` — `text/xml` for `/sitemap.xml`, `text/plain` for `/robots.txt`
 
 ## デプロイ
 
