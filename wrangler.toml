@@ -1,0 +1,7 @@
+name = "tv-mita"
+compatibility_date = "2026-08-29"
+pages_build_output_dir = "./site"
+
+# Static site in site/. A top-level 404.html is required: Cloudflare Pages
+# treats a missing 404.html as an SPA and serves /index.html (200) for
+# unknown paths, including /sitemap.xml and /robots.txt.
