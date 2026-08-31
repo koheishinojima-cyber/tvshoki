@@ -2,9 +2,15 @@
 
 Original text/shape thumbnails for 速報 article OGP and list cards.
 
-- Same PNG is `og:image`, `twitter:image`, and the `.og-card` list image.
-- Brand wordmark is the text **テレビでみた** only (no program logo, TV screenshot, manufacturer photo, or licensed artwork).
-- Colors match live `styles.css`: bg `#faf8f5`, text `#222`, muted `#555`/`#666`, hairline `#e4dfd6`, CTA `#1a1a1a`.
+WEB Designer lock (hamburg pilot visual — reuse this template forever):
+
+- Same PNG is `og:image`, `twitter:image`, and the `.og-card` date-index card that links to the article.
+- Paper white `#faf8f5`. Text + simple geometric shapes only.
+- Small **テレビでみた** at the top. Center, large, short three lines: 番組名 / 短い日付 / 短い主題.
+  Hamburg: `サタデープラス` / `8月29日` / `ハンバーグ`.
+- Do not put お取り寄せ食品, product SKU names, ranking, 予告, prices, or buy CTAs on the thumb.
+- No program logo, TV screenshot, manufacturer photo, or licensed artwork.
+- SKU photos on the article stay Rakuten listing photos. OGP does not switch to those.
 
 ## Generate / regenerate
 
@@ -14,11 +20,11 @@ From the repo root:
 python3 scripts/generate_og_thumb.py \
   --slug 2026-08-29-hamburg \
   --program サタデープラス \
-  --date 2026年8月29日 \
-  --category お取り寄せ食品
+  --date 8月29日 \
+  --topic ハンバーグ
 ```
 
-For a later date (e.g. 9/5), change `--slug`, `--program`, `--date`, and `--category`. Do not publish a new product URL until the name is confirmed.
+For a later date (e.g. 9/5), change `--slug`, `--program`, `--date`, and `--topic`. Keep the third line short so it stays readable when the card is shrunk on a phone. Do not publish a new product URL until the name is confirmed.
 
 Needs `rsvg-convert` (`librsvg2-bin`) and a Japanese-capable font:
 

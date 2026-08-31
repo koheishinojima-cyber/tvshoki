@@ -1,12 +1,22 @@
 #!/usr/bin/env python3
 """Generate a 1200×630 original text/shape OG thumbnail (SVG + PNG).
 
+WEB Designer lock (hamburg pilot visual, reuse forever):
+  - Paper white background (#faf8f5)
+  - Text + simple geometric shapes only
+  - Small site name テレビでみた at the top
+  - Center, large, short three lines: 番組名 / 短い日付 / 短い主題
+    Example: サタデープラス / 8月29日 / ハンバーグ
+  - Not お取り寄せ食品, not SKU names, not ranking, not 予告
+  - No TV screenshots, program logos, manufacturer images, prices, or CTAs
+  - Same PNG is og:image, twitter:image, and the date-index card
+
 Usage (9/5 and later):
   python3 scripts/generate_og_thumb.py \\
     --slug 2026-09-05-example \\
     --program サタデープラス \\
-    --date 2026年9月5日 \\
-    --category 生活便利グッズ
+    --date 9月5日 \\
+    --topic ハンバーグ
 
 Writes site/og/<slug>.svg and site/og/<slug>.png.
 
@@ -14,10 +24,6 @@ Rasterizer: rsvg-convert (librsvg). Japanese glyphs come from Noto Sans CJK JP
 when installed (OFL, apt: fonts-noto-cjk), else Noto Sans JP / Hiragino Sans
 via fontconfig. The SVG itself names Hiragino Sans / Noto Sans JP so browsers
 match the live site stack. Do not invent English-only thumbs.
-
-Brand colors are locked to live site/styles.css until Designer revises:
-  bg #faf8f5, text #222, muted #555/#666, hairline #e4dfd6, CTA #1a1a1a.
-Wordmark is text only: テレビでみた.
 """
 
 from __future__ import annotations
@@ -35,6 +41,11 @@ DEFAULT_OUT_DIR = ROOT / "site" / "og"
 WIDTH = 1200
 HEIGHT = 630
 FONT_STACK = "Hiragino Sans, Noto Sans JP, Noto Sans CJK JP, sans-serif"
+BG = "#faf8f5"
+INK = "#222"
+MUTED = "#666"
+HAIRLINE = "#e4dfd6"
+RULE = "#1a1a1a"
 
 
 def png_dimensions(path: Path) -> tuple[int, int]:
@@ -50,19 +61,19 @@ def png_dimensions(path: Path) -> tuple[int, int]:
     return width, height
 
 
-def svg_markup(program: str, date: str, category: str) -> str:
+def svg_markup(program: str, date: str, topic: str) -> str:
     program_xml = escape(program)
     date_xml = escape(date)
-    category_xml = escape(category)
+    topic_xml = escape(topic)
     return f"""<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{HEIGHT}" viewBox="0 0 {WIDTH} {HEIGHT}">
-  <rect width="{WIDTH}" height="{HEIGHT}" fill="#faf8f5"/>
-  <rect x="48" y="48" width="1104" height="534" fill="none" stroke="#e4dfd6" stroke-width="2"/>
-  <rect x="48" y="48" width="18" height="534" fill="#1a1a1a"/>
-  <text x="108" y="228" font-family="{FONT_STACK}" font-size="72" font-weight="700" fill="#222">{program_xml}</text>
-  <text x="108" y="318" font-family="{FONT_STACK}" font-size="48" font-weight="500" fill="#555">{date_xml}</text>
-  <text x="108" y="422" font-family="{FONT_STACK}" font-size="52" font-weight="700" fill="#222">{category_xml}</text>
-  <text x="108" y="528" font-family="{FONT_STACK}" font-size="28" font-weight="500" fill="#666">テレビでみた</text>
+  <rect width="{WIDTH}" height="{HEIGHT}" fill="{BG}"/>
+  <rect x="40" y="40" width="1120" height="550" fill="none" stroke="{HAIRLINE}" stroke-width="2"/>
+  <text x="600" y="108" text-anchor="middle" font-family="{FONT_STACK}" font-size="28" font-weight="500" fill="{MUTED}">テレビでみた</text>
+  <rect x="552" y="128" width="96" height="3" fill="{RULE}"/>
+  <text x="600" y="280" text-anchor="middle" font-family="{FONT_STACK}" font-size="96" font-weight="700" fill="{INK}">{program_xml}</text>
+  <text x="600" y="372" text-anchor="middle" font-family="{FONT_STACK}" font-size="56" font-weight="500" fill="{MUTED}">{date_xml}</text>
+  <text x="600" y="478" text-anchor="middle" font-family="{FONT_STACK}" font-size="84" font-weight="700" fill="{INK}">{topic_xml}</text>
 </svg>
 """
 
@@ -94,9 +105,13 @@ def rasterize(svg_path: Path, png_path: Path) -> None:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--slug", required=True, help="Output basename, e.g. 2026-08-29-hamburg")
-    parser.add_argument("--program", required=True, help="番組名")
-    parser.add_argument("--date", required=True, help="放送日, e.g. 2026年8月29日")
-    parser.add_argument("--category", required=True, help="商品カテゴリ")
+    parser.add_argument("--program", required=True, help="番組名, e.g. サタデープラス")
+    parser.add_argument("--date", required=True, help="短い放送日, e.g. 8月29日")
+    parser.add_argument(
+        "--topic",
+        required=True,
+        help="短い主題, e.g. ハンバーグ（カテゴリ名・SKU名・ランキング・予告は使わない）",
+    )
     parser.add_argument(
         "--out-dir",
         type=Path,
@@ -110,7 +125,7 @@ def main() -> int:
     svg_path = out_dir / f"{args.slug}.svg"
     png_path = out_dir / f"{args.slug}.png"
 
-    svg_path.write_text(svg_markup(args.program, args.date, args.category), encoding="utf-8")
+    svg_path.write_text(svg_markup(args.program, args.date, args.topic), encoding="utf-8")
     rasterize(svg_path, png_path)
 
     width, height = png_dimensions(png_path)
