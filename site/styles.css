@@ -66,6 +66,28 @@ h1 {
   object-fit: cover;
 }
 
+.item-image.hero-image img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+}
+
+.sources {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e4dfd6;
+}
+
+.sources h2 {
+  font-size: 1.15rem;
+}
+
+.sources a {
+  color: inherit;
+}
+
 /* Corner/list cards that use the 1200×630 OG thumb (not the 140px product crop) */
 .item-card.og-card img {
   width: 100%;
