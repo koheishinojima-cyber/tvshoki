@@ -78,28 +78,60 @@ def svg_markup(program: str, date: str, topic: str) -> str:
 """
 
 
-def rasterize(svg_path: Path, png_path: Path) -> None:
+def rasterize_with_pillow(png_path: Path, program: str, date: str, topic: str) -> None:
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError as exc:
+        raise SystemExit("Pillow is required when no working SVG rasterizer is available") from exc
+    font_path = Path("/System/Library/Fonts/Hiragino Sans GB.ttc")
+    if not font_path.exists():
+        raise SystemExit("Japanese font not found for Pillow fallback")
+    image = Image.new("RGB", (WIDTH, HEIGHT), BG)
+    draw = ImageDraw.Draw(image)
+    draw.rectangle((40, 40, 1160, 590), outline=HAIRLINE, width=2)
+
+    def centered(text: str, y: int, size: int, color: str) -> None:
+        font = ImageFont.truetype(str(font_path), size=size, index=0)
+        box = draw.textbbox((0, 0), text, font=font)
+        x = (WIDTH - (box[2] - box[0])) / 2
+        draw.text((x, y), text, font=font, fill=color)
+
+    centered("テレビでみた", 74, 28, MUTED)
+    draw.rectangle((552, 128, 648, 131), fill=RULE)
+    centered(program, 178, 96, INK)
+    centered(date, 318, 56, MUTED)
+    centered(topic, 390, 84, INK)
+    image.save(png_path, format="PNG")
+
+
+def rasterize(svg_path: Path, png_path: Path, program: str, date: str, topic: str) -> None:
     rsvg = shutil.which("rsvg-convert")
-    if not rsvg:
-        raise SystemExit(
-            "rsvg-convert not found. Install librsvg2-bin "
-            "(and fonts-noto-cjk for Japanese glyphs)."
+    if rsvg:
+        subprocess.run(
+            [
+                rsvg,
+                "--width",
+                str(WIDTH),
+                "--height",
+                str(HEIGHT),
+                "--format",
+                "png",
+                "--output",
+                str(png_path),
+                str(svg_path),
+            ],
+            check=True,
         )
-    subprocess.run(
-        [
-            rsvg,
-            "--width",
-            str(WIDTH),
-            "--height",
-            str(HEIGHT),
-            "--format",
-            "png",
-            "--output",
-            str(png_path),
-            str(svg_path),
-        ],
-        check=True,
-    )
+        return
+    magick = shutil.which("magick")
+    if magick:
+        result = subprocess.run(
+            [magick, "-background", "none", "-density", "96", str(svg_path), str(png_path)],
+            capture_output=True,
+        )
+        if result.returncode == 0:
+            return
+    rasterize_with_pillow(png_path, program, date, topic)
 
 
 def main() -> int:
@@ -126,7 +158,7 @@ def main() -> int:
     png_path = out_dir / f"{args.slug}.png"
 
     svg_path.write_text(svg_markup(args.program, args.date, args.topic), encoding="utf-8")
-    rasterize(svg_path, png_path)
+    rasterize(svg_path, png_path, args.program, args.date, args.topic)
 
     width, height = png_dimensions(png_path)
     if (width, height) != (WIDTH, HEIGHT):
