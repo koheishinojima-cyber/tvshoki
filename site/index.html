@@ -19,39 +19,84 @@
 </head>
 <body>
   <header class="site-header">
-    <p class="brand"><a href="./">テレビでみた</a></p>
+    <div class="header-inner">
+      <p class="brand"><a href="./"><span class="brand-mark">TV</span>テレビでみた</a></p>
+      <p class="header-note">テレビ紹介商品の記録メディア</p>
+    </div>
   </header>
-  <main>
-    <h1>テレビで紹介された商品を探す</h1>
-    <p class="lead">シューイチ、サタデープラスなど、テレビ番組で紹介された商品を放送日・番組名から探せます。</p>
-    <article class="item-card">
-      <a href="./2026-08-29/">
-        <p class="eyebrow">サタデープラス　2026年8月29日</p>
-        <h2>紹介された商品</h2>
-        <p class="reason">番組で紹介</p>
-      </a>
-    </article>
-    <article class="item-card og-card">
-      <a href="./2026-08-21/osaka-honwaka-benri-goods/">
-        <img src="./og/2026-08-21-osaka-honwaka-benri-goods.png" width="1200" height="630" alt="大阪ほんわかテレビで紹介された便利グッズBEST5のイメージ">
-        <p class="eyebrow">大阪ほんわかテレビ　2026年8月21日</p>
-        <h2>便利グッズBEST5</h2>
-        <p class="reason">番組で紹介</p>
-      </a>
-    </article>
-    <article class="item-card">
-      <a href="./p/">
-        <p class="item-image"><img src="https://shop.r10s.jp/smilespoon/cabinet/09/7187909_1.jpg" alt="鉄板焼チーズインハンバーグ 1個入り 100g"></p>
-        <p class="eyebrow">サタデープラス　2026年8月29日</p>
-        <p class="brand-name">日東ベスト / エーデルシェフ</p>
-        <h2>鉄板焼チーズインハンバーグ</h2>
-        <p class="reason">番組で紹介</p>
-        <p class="price">347円</p>
-      </a>
-    </article>
+  <main class="home-main">
+    <section class="home-hero" aria-labelledby="home-title">
+      <p class="hero-kicker">テレビで気になったもの、ここで見つかる。</p>
+      <h1 id="home-title">あの商品、<br><span>なんだっけ？</span></h1>
+      <p class="lead">「この前テレビで見たのに、名前を忘れちゃった…」そんな商品を、放送日と番組名からすぐに探せます。</p>
+      <nav class="program-nav" aria-label="番組から探す">
+        <a href="./satapla/">サタプラ</a>
+        <a href="./brunch/">王様のブランチ</a>
+        <a href="./shoichi/">シューイチ</a>
+        <a href="./jobtune/">ジョブチューン</a>
+        <a href="./matsuko/">マツコの知らない世界</a>
+      </nav>
+    </section>
+
+    <section class="home-section" aria-labelledby="latest-heading">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">新しい放送から</p>
+          <h2 id="latest-heading">放送日から探す</h2>
+        </div>
+        <p>放送日が新しい順</p>
+      </div>
+      <div class="home-grid">
+        <article class="home-card home-card--text">
+          <a href="./2026-08-29/">
+            <div class="home-card-placeholder" aria-hidden="true"><span>サタデープラス</span></div>
+            <div class="home-card-body">
+              <p class="broadcast-date"><time datetime="2026-08-29"><strong>8月29日</strong><span>（土）放送</span></time></p>
+              <p class="home-card-program">サタデープラス</p>
+              <h3>番組で紹介された商品まとめ</h3>
+              <p class="home-card-link">商品を見る <span aria-hidden="true">→</span></p>
+            </div>
+          </a>
+        </article>
+        <article class="home-card">
+          <a href="./2026-08-21/osaka-honwaka-benri-goods/">
+            <img src="./og/2026-08-21-osaka-honwaka-benri-goods.png" width="1200" height="630" alt="大阪ほんわかテレビで紹介された便利グッズBEST5">
+            <div class="home-card-body">
+              <p class="broadcast-date"><time datetime="2026-08-21"><strong>8月21日</strong><span>（金）放送</span></time></p>
+              <p class="home-card-program">大阪ほんわかテレビ</p>
+              <h3>便利グッズBEST5</h3>
+              <p class="home-card-link">商品を見る <span aria-hidden="true">→</span></p>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section" aria-labelledby="products-heading">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">暮らしに役立つ</p>
+          <h2 id="products-heading">今週の注目商品</h2>
+        </div>
+      </div>
+      <article class="product-card">
+        <a href="./p/">
+          <div class="product-card-image"><img src="https://shop.r10s.jp/smilespoon/cabinet/09/7187909_1.jpg" alt="鉄板焼チーズインハンバーグ 1個入り 100g"></div>
+          <div class="product-card-body">
+            <p class="product-broadcast-date"><strong>8月29日</strong>（土）放送</p>
+            <p class="product-card-program">サタデープラスで紹介</p>
+            <p class="brand-name">日東ベスト / エーデルシェフ</p>
+            <h3>鉄板焼チーズインハンバーグ</h3>
+            <p class="product-card-price">347円</p>
+            <p class="home-card-link">詳しく見る <span aria-hidden="true">→</span></p>
+          </div>
+        </a>
+      </article>
+    </section>
   </main>
   <footer class="site-footer">
-    <p>テレビでみた</p>
+    <p class="footer-brand">テレビでみた</p>
+    <p>テレビで紹介された商品を、あとから見つけやすく。</p>
   </footer>
 </body>
 </html>
