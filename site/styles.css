@@ -486,6 +486,85 @@ h1 {
   font-weight: 800;
 }
 
+.editorial-profile {
+  margin-top: clamp(2.75rem, 7vw, 5rem);
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border: 1px solid rgba(38, 92, 72, 0.16);
+  border-radius: 1.25rem;
+  background: linear-gradient(135deg, #f3f7f3, #fffaf3);
+}
+
+.profile-label {
+  margin: 0 0 0.5rem;
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.editorial-profile h2 {
+  max-width: 22em;
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  line-height: 1.4;
+}
+
+.editorial-profile p {
+  max-width: 46rem;
+  margin: 0.65rem 0;
+}
+
+.profile-link {
+  display: inline-block;
+  margin-top: 0.9rem;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.about-main {
+  max-width: 52rem;
+}
+
+.about-article {
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: var(--paper);
+  box-shadow: 0 0.55rem 1.8rem rgba(23, 32, 28, 0.06);
+}
+
+.about-article h1 {
+  margin-top: 0;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  line-height: 1.15;
+}
+
+.about-lead {
+  color: var(--green);
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  font-weight: 700;
+}
+
+.about-article section {
+  margin-top: 2.25rem;
+}
+
+.about-article h2 {
+  color: var(--ink);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+}
+
+.about-article li + li {
+  margin-top: 0.55rem;
+}
+
+.site-footer a {
+  color: var(--green);
+}
+
 .site-footer {
   margin-top: 4rem;
   padding-top: 2.5rem;
@@ -589,6 +668,11 @@ h1 {
 .program-hero--doyounani {
   background: radial-gradient(circle at 88% 16%, rgba(244, 188, 71, .25), transparent 28%), linear-gradient(135deg, #fff1e5, #fffaf4 55%, #edf7ee);
 }
+.program-hero--matsuko {
+  background:
+    radial-gradient(circle at 88% 16%, rgba(180, 92, 140, .14), transparent 26%),
+    linear-gradient(135deg, #fff0e5, #fffaf5 52%, #f6eaf3);
+}
 .next-date, .next-time, .program-feature, .program-guests, .program-hero-note { margin: 0; }
 .next-date time { display: flex; align-items: baseline; gap: .35rem; }
 .next-date strong { color: var(--accent); font-size: clamp(2.8rem, 9vw, 5rem); line-height: 1; letter-spacing: -.055em; }
@@ -602,6 +686,7 @@ h1 {
 .program-section { margin-top: clamp(2.5rem, 7vw, 4.5rem); }
 .program-section > h2 { margin: 0 0 .9rem; color: var(--ink); font-size: clamp(1.3rem, 3vw, 1.75rem); line-height: 1.4; }
 .program-latest-card { max-width: 40rem; margin-top: 0; }
+.program-latest-list { display: grid; gap: 1.25rem; }
 .card-summary { margin: .65rem 0 0; color: var(--muted); font-size: .9rem; }
 .program-guide { max-width: 48rem; padding: clamp(1.4rem, 4vw, 2.2rem); border: 1px solid var(--line); border-radius: 1.1rem; background: var(--paper); }
 .program-guide p:not(.section-kicker) { margin: .8rem 0 0; color: #46504b; }
